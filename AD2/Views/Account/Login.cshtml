@@ -1,0 +1,33 @@
+﻿@model ADLoginApp.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+    <div>
+        <label for="username">Username:</label>
+        @Html.TextBoxFor(m => m.Username, new { @id = "username" })
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        @Html.PasswordFor(m => m.Password, new { @id = "password" })
+    </div>
+    <div>
+        <label for="adServer">AD Server IP:</label>
+        @Html.TextBoxFor(m => m.ADServer, new { @id = "adServer" })
+    </div>
+    <div>
+        <input type="submit" value="Login" />
+    </div>
+
+    if (ViewBag.Message != null)
+    {
+        <p>@ViewBag.Message</p>
+    }
+
+    @Html.ValidationSummary(true)
+}
